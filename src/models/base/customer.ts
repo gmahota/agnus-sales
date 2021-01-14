@@ -1,5 +1,4 @@
 import {Entity,Column,PrimaryColumn,PrimaryGeneratedColumn, ManyToOne,JoinColumn} from 'typeorm';
-import Publication from "../book/publication";
 import Order from "../sales/order";
 import Payment from "../sales/payment";
 import PaymentMpesaLog from "../sales/paymentMpesaLog";
@@ -26,8 +25,6 @@ export default class Customer {
 
     @Column()
     status?:string;
-    
-    publications?:Publication[]
 
     orders?:Order[];
 
