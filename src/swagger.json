@@ -1,0 +1,847 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "NodeJS Sales Api",
+        "description": "A Api Middleware from UTTN",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:5000",
+    "basePath": "/api",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "securityDefinitions": {
+        "jwt": {
+            "type":"apiKey",
+            "in":"header",
+            "name": "Authorization",
+            "template": "Bearer {apiKey}"
+         }
+    },
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User Login On the system",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/UserAuth"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/auth/guest": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Gest Login",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/auth/auth": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Gest Login",
+                "produces": [
+                    "application/json"
+                ],                
+                "security": [
+                    {
+                        "jwt": {
+                            "type":"apiKey",
+                            "in":"header",
+                            "name": "Authorization",
+                            "template": "Bearer {apiKey}"
+                         }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get All Users in System",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create New User On The System",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of the cat that we want to",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get User of the given ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            }
+        },
+        "/journals": {
+            "get": {
+                "tags": [
+                    "Journal"
+                ],
+                "summary": "Get All Journals in System",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Journal"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Journal"
+                ],
+                "summary": "Create New Journal On The System",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Journal"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/journals/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of the cat that we want to",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Journal"
+                ],
+                "summary": "Get Journal of the given ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Journal"
+                        }
+                    }
+                }
+            }
+        },
+        "/journals/{id}/newprice/{price}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of the Journal that we want to",
+                    "type": "string"
+                },
+                {
+                    "name": "price",
+                    "in": "path",
+                    "required": true,
+                    "description": "Price of the cat that we want to",
+                    "type": "number"
+                }
+            ],
+            "post": {
+                "tags": [
+                    "Journal"
+                ],
+                "summary": "Update a Journal Price On The System",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/id"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/flippingBook": {
+            "get": {
+                "tags": [
+                    "Publication"
+                ],
+                "summary": "Update From Flipping Book System",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/publications": {
+            "get": {
+                "tags": [
+                    "Publication"
+                ],
+                "summary": "Get All Journals in System",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Publication"
+                        }
+                    }
+                }
+            }
+        },
+        "/publications/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of the cat that we want to",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Publication"
+                ],
+                "summary": "Get Journal of the given ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Publication"
+                        }
+                    }
+                }
+            }
+        },
+        "/orders": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Get All Orders in System",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Order"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Create New Order On The System",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Order"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Order"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/orders/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of the Order that we want to",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "Get Order of the given ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Order"
+                        }
+                    }
+                }
+            }
+        },
+        "/payments": {
+            "get": {
+                "tags": [
+                    "Payment"
+                ],
+                "summary": "Get All Payments in System",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Payment"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Payment"
+                ],
+                "summary": "Create New Payment On The System",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Payment"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Payment"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/payments/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of the Order that we want to",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Payment"
+                ],
+                "summary": "Get Payment of the given ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Payment"
+                        }
+                    }
+                }
+            }
+        },
+        "/customer": {
+            "get": {
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Get All Customers in System",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Create New Customer On The System",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User that we want to create",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    },
+                    "400": {
+                        "description": "Failed. Bad post data."
+                    }
+                }
+            }
+        },
+        "/customer/{phonenumber}": {
+            "parameters": [
+                {
+                    "name": "phonenumber",
+                    "in": "path",
+                    "required": true,
+                    "description": "PhoneNumber of the Order that we want to",
+                    "type": "string"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Get Customer of the given ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    }
+                }
+            }
+        },
+        "/customer/{phonenumber}/publications/": {
+            "parameters": [
+                {
+                    "name": "phonenumber",
+                    "in": "path",
+                    "required": true,
+                    "description": "PhoneNumber of the Order that we want to",
+                    "type": "string"
+                },
+                {
+                    "in": "query",
+                    "name": "limit",
+                    "type": "integer",
+                    "description": "The numbers of items to return"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Get Publication for Customer of the given ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Publication"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        
+        "id": {
+            "properties": {
+                "uuid": {
+                    "type": "string"
+                }
+            }
+        },
+        "UserAuth": {
+            "properties": {
+                "username": {
+                    "type": "string",
+                    "title": "username"
+                },
+                "password": {
+                    "type": "string",
+                    "title": "password"
+                }
+            }
+        },
+        "Users": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "title": "id"
+                },
+                "username": {
+                    "type": "string",
+                    "title": "username"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "name"
+                },
+                "firstName": {
+                    "type": "string",
+                    "title": "firstName"
+                },
+                "lastName": {
+                    "type": "string",
+                    "title": "lastName"
+                },
+                "email": {
+                    "type": "string",
+                    "title": "email"
+                },
+                "password": {
+                    "title": "password",
+                    "type": "string"
+                },
+                "confirmPassword": {
+                    "title": "password",
+                    "type": "boolean"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "title": "phoneNumber"
+                },
+                "inactive": {
+                    "type": "boolean",
+                    "title": "inactive"
+                },
+                "country": {
+                    "type": "string",
+                    "title": "country"
+                }
+            }
+        },
+        "Journal": {
+            "title": "Journal",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "title": "id"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "name"
+                },
+                "description": {
+                    "type": "string",
+                    "title": "description"
+                },
+                "price": {
+                    "type": "number",
+                    "title": "amount"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ]
+        },
+        "Publication": {
+            "title": "Publication",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "title": "id"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "title": "date"
+                },
+                "title": {
+                    "type": "string",
+                    "title": "title"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "name"
+                },
+                "description": {
+                    "type": "string",
+                    "title": "description"
+                }
+            },
+            "required": [
+                "id"
+            ]
+        },
+        "Order": {
+            "title": "Order",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "title": "id"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "title": "date"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "name"
+                },
+                "province": {
+                    "type": "string",
+                    "title": "province"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "title": "phoneNumber"
+                },
+                "status": {
+                    "type": "string",
+                    "title": "status"
+                },
+                "publicationId": {
+                    "type": "string",
+                    "title": "status"
+                }
+            },
+            "required": [
+                "date",
+                "id",
+                "name",
+                "phoneNumber"
+            ]
+        },
+        "Payment": {
+            "Title": "Payment",
+            "Type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "title": "id"
+                },
+                "date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "title": "date"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "title": "phoneNumber"
+                },
+                "reference": {
+                    "type": "string",
+                    "title": "reference"
+                },
+                "transaction": {
+                    "type": "string",
+                    "title": "transaction"
+                },
+                "amount": {
+                    "type": "number",
+                    "title": "amount"
+                },
+                "type": {
+                    "type": "string",
+                    "title": "type"
+                },
+                "status": {
+                    "type": "string",
+                    "title": "status"
+                },
+                "orderId": {
+                    "type": "string",
+                    "title": "status"
+                }
+            }
+        },
+        "Customer": {
+            "title": "Customer",
+            "Type": "object",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "title": "id"
+                },
+                "name": {
+                    "type": "string",
+                    "title": "name"
+                },
+                "address": {
+                    "type": "string",
+                    "title": "address"
+                },
+                "vat": {
+                    "type": "string",
+                    "title": "vat"
+                },
+                "province": {
+                    "type": "string",
+                    "title": "province"
+                },
+                "phoneNumber": {
+                    "type": "string",
+                    "title": "phoneNumber"
+                },
+                "status": {
+                    "type": "string",
+                    "title": "status"
+                }
+            },
+            "required": [
+                "id",
+                "phoneNumber"
+            ]
+        }
+    }
+}
