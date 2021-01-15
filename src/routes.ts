@@ -27,9 +27,20 @@ import {
 import {
   get_all_customers,
   get_customer,
-  create_customer,
-  get_customer_publication
+  create_customer
 } from "./controllers/base/customerController";
+
+import {
+  get_all_products,
+  get_product,
+  create_product
+} from "./controllers/base/productController";
+
+import {
+  get_all_projects,
+  get_project,
+  create_project
+} from "./controllers/base/projectController";
 
 const routes = Router();
 
@@ -57,9 +68,15 @@ routes
   .get("/api/payments/:id", get_payment)
   .post("/api/payments/",create_payment)
 
-  .get("/api/customer", get_all_customers)
-  .get("/api/customer/:phonenumber", get_customer)
-  .get("/api/customer/:phonenumber/publications",get_customer_publication)
-  .post("/api/customer/",create_customer)
+  .get("/api/customers", get_all_customers)
+  .get("/api/customers/:phonenumber", get_customer)
+  .post("/api/customers/",create_customer)
   
+  .get("/api/products", get_all_products)
+  .get("/api/products/:id", get_product)
+  .post("/api/products/",create_product)
+
+  .get("/api/projects", get_all_projects)
+  .get("/api/projects/:id", get_project)
+  .post("/api/projects/",create_project)
 export default routes;

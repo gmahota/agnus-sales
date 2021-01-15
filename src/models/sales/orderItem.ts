@@ -1,18 +1,54 @@
-import OrderItemVariant from './orderItemVariant'
-interface OrderItem {
-  id: number
-  code: string
-  description: string
-  unity: string
-  quantity: number
-  price: number
-  grossTotal: number
-  vatTotal: number
-  total: number
-  status?: string
-  project?: string
-  vatCode?: string
-  itemVarients?: OrderItemVariant[]
-}
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToOne,
+  JoinColumn,
+  OneToMany,
+} from "typeorm";
+import Order from "./order";
 
-export default OrderItem
+import OrderItemVariant from "./orderItemVariant";
+import Project from './../base/project';
+
+@Entity("orderItem")
+export default class OrderItem {
+  @PrimaryGeneratedColumn("increment")
+  id: number;
+  @Column({ length: 20, nullable: true })
+  code?: string;
+  @Column({ length: 50, nullable: true })
+  description?: string;
+  @Column({ length: 20, nullable: true })
+  unity?: string;
+  @Column()
+  quantity: number;
+  @Column()
+  price: number;
+  @Column()
+  grossTotal: number;
+  @Column({ length: 10, nullable: true })
+  vatCode?: string;
+
+  @Column()
+  vatTotal: number;
+
+  @Column()
+  total: number;
+  @Column({ length: 10, nullable: true })
+  status?: string;
+
+  @ManyToOne(()=> Project, project => project.orderItems )
+  @JoinColumn({name:'project_id'})
+  project?: string;
+
+  @OneToMany(()=> OrderItemVariant, item => item.orderItem,{
+    cascade:['insert','update']
+  })
+  itemVarients?: OrderItemVariant[];
+
+  @ManyToOne(()=> Order, order => order.items )
+  @JoinColumn({name:'order_id'})
+  order:Order;
+}

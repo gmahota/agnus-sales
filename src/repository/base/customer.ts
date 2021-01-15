@@ -1,7 +1,7 @@
 import Customer from "../../models/base/customer";
 import Payment from "../../models/sales/payment";
 import { getRepository,getConnection } from "typeorm";
-import Order from './../../models/sales/order';
+import Order from '../../models/sales/order';
 
 interface Key {
   id?: any;

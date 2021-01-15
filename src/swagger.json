@@ -187,169 +187,6 @@
                 }
             }
         },
-        "/journals": {
-            "get": {
-                "tags": [
-                    "Journal"
-                ],
-                "summary": "Get All Journals in System",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Journal"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "Journal"
-                ],
-                "summary": "Create New Journal On The System",
-                "parameters": [
-                    {
-                        "in": "body",
-                        "name": "body",
-                        "description": "User that we want to create",
-                        "schema": {
-                            "$ref": "#/definitions/Journal"
-                        }
-                    }
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/id"
-                        }
-                    },
-                    "400": {
-                        "description": "Failed. Bad post data."
-                    }
-                }
-            }
-        },
-        "/journals/{id}": {
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "description": "ID of the cat that we want to",
-                    "type": "string"
-                }
-            ],
-            "get": {
-                "tags": [
-                    "Journal"
-                ],
-                "summary": "Get Journal of the given ID",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Journal"
-                        }
-                    }
-                }
-            }
-        },
-        "/journals/{id}/newprice/{price}": {
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "description": "ID of the Journal that we want to",
-                    "type": "string"
-                },
-                {
-                    "name": "price",
-                    "in": "path",
-                    "required": true,
-                    "description": "Price of the cat that we want to",
-                    "type": "number"
-                }
-            ],
-            "post": {
-                "tags": [
-                    "Journal"
-                ],
-                "summary": "Update a Journal Price On The System",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/id"
-                        }
-                    },
-                    "400": {
-                        "description": "Failed. Bad post data."
-                    }
-                }
-            }
-        },
-        "/flippingBook": {
-            "get": {
-                "tags": [
-                    "Publication"
-                ],
-                "summary": "Update From Flipping Book System",
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    }
-                }
-            }
-        },
-        "/publications": {
-            "get": {
-                "tags": [
-                    "Publication"
-                ],
-                "summary": "Get All Journals in System",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Publication"
-                        }
-                    }
-                }
-            }
-        },
-        "/publications/{id}": {
-            "parameters": [
-                {
-                    "name": "id",
-                    "in": "path",
-                    "required": true,
-                    "description": "ID of the cat that we want to",
-                    "type": "string"
-                }
-            ],
-            "get": {
-                "tags": [
-                    "Publication"
-                ],
-                "summary": "Get Journal of the given ID",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/Publication"
-                        }
-                    }
-                }
-            }
-        },
         "/orders": {
             "get": {
                 "tags": [
@@ -492,7 +329,7 @@
                 }
             }
         },
-        "/customer": {
+        "/customers": {
             "get": {
                 "tags": [
                     "Customer"
@@ -538,7 +375,7 @@
                 }
             }
         },
-        "/customer/{phonenumber}": {
+        "/customers/{phonenumber}": {
             "parameters": [
                 {
                     "name": "phonenumber",
@@ -563,7 +400,7 @@
                 }
             }
         },
-        "/customer/{phonenumber}/publications/": {
+        "/customers/{phonenumber}/publications/": {
             "parameters": [
                 {
                     "name": "phonenumber",

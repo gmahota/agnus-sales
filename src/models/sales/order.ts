@@ -27,7 +27,11 @@ export default class Order {
   @Column()
   total?: number;
 
+  @OneToMany(()=> OrderItem, item => item.order,{
+    cascade:['insert','update']
+  })
   items: OrderItem[]
+  
   Invoices?: Invoice[]
 
   constructor() {

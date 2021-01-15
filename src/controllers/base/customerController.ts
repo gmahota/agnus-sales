@@ -3,8 +3,6 @@ import CustomerService from "../../services/base/customer";
 import Customer from "../../models/base/customer";
 import OrderService from "../../services/sales/order";
 import Order from "../../models/sales/order";
-import publicationService from "../../services/book/publication";
-import Publication from "../../models/book/publication";
 
 export const get_all_customers = async (
   request: Request,
@@ -15,9 +13,9 @@ export const get_all_customers = async (
 };
 
 export const get_customer = async (request: Request, response: Response) => {
-  const { phonenumber } = request.params;
+  const { id } = request.params;
 
-  const Customer = await CustomerService.getByPhoneNumber(phonenumber);
+  const Customer = await CustomerService.getById(id);
 
   if (Customer) {
     return response.status(200).json(Customer);
@@ -73,11 +71,3 @@ export const delete_customer = async (request: Request, response: Response) => {
     );
   }
 };
-
-export const get_customer_publication = async (request: Request, response: Response) => {
-  const { phonenumber } = request.params;
-  const { limit } = request.query;
-  const Publications = await CustomerService.getPublications(phonenumber, Number(limit?limit:0));
-
-  return response.status(200).json(Publications);
-}

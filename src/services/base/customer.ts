@@ -1,6 +1,6 @@
 
 import Customer  from '../../models/base/customer'
-import CustomerRepository  from '../../repository/base/customerRepository'
+import CustomerRepository  from '../../repository/base/customer'
 
 
 const getById = (id:string) =>
@@ -16,13 +16,10 @@ const create = (Customer:Customer) =>
 const getByPhoneNumber= (phoneNumber:string) =>
     CustomerRepository.findByPhoneNumber(phoneNumber)
 
-const getPublications= (phoneNumber:string,limit:number) =>
-    CustomerRepository.findByPublications(phoneNumber,limit)
 
 export default {
   getAll,
   getById,
   create,
-  getByPhoneNumber,
-  getPublications
+  getByPhoneNumber
 }
