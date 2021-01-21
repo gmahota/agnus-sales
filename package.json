@@ -7,7 +7,7 @@
     "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
     "start": "node dist/server.js",
     "deploy": "git add . && git commit -m 'Heroku' && git push heroku main",
-    "build": "tsc && node dist/server.js",
+    "build": "tsc",
     "clean": "rm -rf ./dist",
     "postinstall": "tsc",
     "typeorm": "tsnd ./node_modules/typeorm/cli.js"
