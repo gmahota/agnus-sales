@@ -1,7 +1,7 @@
 import { ConnectionOptions } from "typeorm";
 
 export default {
-  type: "mysql",
+  type: process.env.DB_TYPE || "mysql",
   database: process.env.DB_CONFIG,
   port: process.env.SQL_PORT,// 5432
   username: process.env.SQL_USER,
