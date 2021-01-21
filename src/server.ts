@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 import "express-async-errors";
 
 import routes from "./routes";
-
 import errorHandler from "./errors/handler";
 
 import "./database/connection";

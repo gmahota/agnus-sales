@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+console.log(process.env.DB_CONFIG)
+console.log(process.env)
+
 export default {
   type: process.env.DB_TYPE || "mysql",
   database: process.env.DB_CONFIG,
