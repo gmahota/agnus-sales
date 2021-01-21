@@ -1,5 +1,7 @@
-import express, { response } from "express";
 import path from "path";
+import 'dotenv/config'
+
+import express, { response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import "express-async-errors";

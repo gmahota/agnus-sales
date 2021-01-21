@@ -1,9 +1,3 @@
-import {getConnectionManager, ConnectionManager,createConnection } from 'typeorm';
-import ConnectionOptions from '../ormconfig'
+import { createConnection } from 'typeorm';
 
-createConnection(ConnectionOptions);
-
-const connectionManager = getConnectionManager();
-const connection = connectionManager.create(ConnectionOptions);
-
-connection.connect(); // performs connection
+createConnection();
