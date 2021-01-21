@@ -1,0 +1,5 @@
+SET GLOBAL sql_mode = 'modes';
+SET SESSION sql_mode = 'modes';
+set session sql_mode="NO_BACKSLASH_ESCAPES,STRICT_TRANS_TABLE,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+SELECT @@GLOBAL.sql_mode;
+SELECT @@SESSION.sql_mode;
