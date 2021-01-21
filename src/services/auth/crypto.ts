@@ -2,7 +2,7 @@
 import bcrypt from "bcrypt";
 import { response } from "express";
 
-import config from "../../../config/crypto";
+import config from "../../config/crypto";
 
 const hash = (value:any) =>
   bcrypt

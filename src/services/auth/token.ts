@@ -1,5 +1,5 @@
 import jwt, { Secret, SignOptions } from "jsonwebtoken";
-import config from "../../../config/crypto";
+import config from "../../config/crypto";
 
 const signOptions: SignOptions = {
   algorithm: "RS256",
