@@ -11,13 +11,6 @@ import MpesaController from "../controllers/MpesaController";
 import AuthController from "../controllers/admin/authController";
 import salesRouter from "./sales";
 
-
-
-
-
-
-
-
 const routes = Router();
 
 /**
