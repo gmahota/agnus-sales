@@ -28,7 +28,7 @@ import {
 
 /**
  * @swagger
- * /Users:
+ * /Admin/Users:
  *   get:
  *     summary: Get User's List JSONPlaceholder 
  *     description: Retrieve a list of users from JSONPlaceholder. Can be used to testing an API.
@@ -54,10 +54,10 @@ import {
  *                         description: The user's name.
  *                         example: Leanne Graham
  */
-  adminRouter.get("/api/users", get_all_users)
+  adminRouter.get("/users", get_all_users)
  /**
  * @swagger
- * /users/{id}:
+ * /Admin/users/{id}:
  *   get:
  *     summary: Retrieve a single JSONPlaceholder user.
  *     description: Retrieve a single JSONPlaceholder user. Can be used to populate a user profile when prototyping or testing an API.
@@ -88,8 +88,8 @@ import {
  *                       description: The user's name.
  *                       example: Leanne Graham
 */
-  adminRouter.get("/api/users/:id", get_user)
-  adminRouter.post("/api/users", create_user)
-  adminRouter.delete("/api/users/:id", delete_user)
+  adminRouter.get("/users/:id", get_user)
+  adminRouter.post("/users", create_user)
+  adminRouter.delete("/users/:id", delete_user)
 
 export default adminRouter
