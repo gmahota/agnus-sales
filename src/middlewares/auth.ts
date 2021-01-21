@@ -26,8 +26,10 @@ const authMiddleware = async (
 ) => {
   const token = await extractToken(request);
 
+  const tokenValid = await tokenAuth.verify(token)
+
   try {
-    if(await tokenAuth.verify(token) === true) {
+    if( tokenValid) {
       next();
     }else{
       handleError

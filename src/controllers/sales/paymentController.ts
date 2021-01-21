@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 import PaymentService from "../../services/sales/payment";
 import OrderService from "../../services/sales/order";
 import Order from "../../models/sales/order";
-import publicationService from "../../services/book/publication";
-import Publication from "../../models/book/publication";
 import Payment from './../../models/sales/payment';
 
 export const get_all_payments = async (request: Request, response: Response) => {

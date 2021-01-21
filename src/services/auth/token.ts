@@ -8,13 +8,7 @@ const signOptions: SignOptions = {
 
 const sign = (payload: any) => jwt.sign(payload, config.jwt.secret);
 
-const verify = async (token: any): Promise<boolean> =>
-  jwt.verify(token, config.jwt.secret, (error, data) => {
-    if (error) {
-      console.log(error);
-      return false;
-    } else return true;
-  });
+const verify = async (token: any) => jwt.verify(token, config.jwt.secret);
 
 export default {
   sign,

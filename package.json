@@ -8,6 +8,7 @@
     "start": "node dist/src/server.js",
     "deploy": "git add . && git commit -m 'Heroku' && git push heroku main",
     "build": "tsc",
+    "postinstall": "tsc",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "test": "jest"
   },
