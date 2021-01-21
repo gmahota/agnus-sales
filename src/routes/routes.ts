@@ -1,64 +1,66 @@
 import { Router, Request, Response } from "express";
-import authMiddleware from "./middlewares/auth";
+import authMiddleware from "../middlewares/auth";
 
-import MpesaController from "./controllers/MpesaController";
+// System Routers
+import adminRouter from "./admin";
+import authRouter from "./auth";
 
-import {
-  get_all_users,
-  get_user,
-  create_user,
-  delete_user,
-} from "./controllers/admin/userController";
 
-import AuthController from "./controllers/admin/authController";
+import MpesaController from "../controllers/MpesaController";
+
+import AuthController from "../controllers/admin/authController";
 
 import {
   get_all_orders,
   get_order,
   create_order
-} from "./controllers/sales/orderController";
+} from "../controllers/sales/orderController";
 
 import {
   get_all_payments,
   get_payment,
   create_payment
-} from "./controllers/sales/paymentController";
+} from "../controllers/sales/paymentController";
 
 import {
   get_all_customers,
   get_customer,
   create_customer
-} from "./controllers/base/customerController";
+} from "../controllers/base/customerController";
 
 import {
   get_all_products,
   get_product,
   create_product
-} from "./controllers/base/productController";
+} from "../controllers/base/productController";
 
 import {
   get_all_projects,
   get_project,
   create_project
-} from "./controllers/base/projectController";
+} from "../controllers/base/projectController";
+
 
 const routes = Router();
 
+routes.use(adminRouter);
+routes.use(authRouter);
+
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     summary: Home Page
+ *     description: Can be used to testing an API.
+*/
 routes.get("/", async (request: Request, response: Response) => {
   response.send("WellCome!");
 });
 
 routes.get("/mpesa/receivemoney", MpesaController.receiveMoney);
 
-routes
-  .get("/api/users", get_all_users)
-  .get("/api/users/:id", get_user)
-  .post("/api/users", create_user)
-  .delete("/api/users/:id", delete_user)
 
-  .post("/api/auth/login", AuthController.login)
-  .get("/api/auth/guest", AuthController.guest)
-  .get("/api/auth/auth", authMiddleware, AuthController.auth)
+routes
   
   .get("/api/orders", get_all_orders)
   .get("/api/orders/:id", get_order)
