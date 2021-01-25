@@ -8,7 +8,7 @@ export const get_all_orders = async (request: Request, response: Response) => {
 };
 
 export const get_order = async (request: Request, response: Response) => {
-  const { id } = request.body;
+  const { id } =request.params;
 
   const order = await orderService.getById(id);
 

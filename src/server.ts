@@ -5,6 +5,7 @@ import express, { response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import "express-async-errors";
+import morgan from "morgan";
 
 import routes from "./routes/routes";
 import errorHandler from "./errors/handler";
@@ -63,5 +64,6 @@ app.use(express.json());
 app.use(routes);
 app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
 app.use(errorHandler);
+app.use(morgan('combined'))
 
 app.listen(port);

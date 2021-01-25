@@ -48,7 +48,7 @@ export default class OrderItem {
   })
   itemVarients?: OrderItemVariant[];
 
-  @ManyToOne(()=> Order, order => order.items )
+  @ManyToOne(()=> Order, order => order.items, { lazy: true } )
   @JoinColumn({name:'order_id'})
   order:Order;
 }

@@ -14,8 +14,11 @@ interface Key {
 const findById = async function findById(id: string): Promise<Order> {
   const OrderRepository = getRepository(Order);
 
-  const order: Order = await OrderRepository.findOneOrFail(
-    { where: { id: id }, relations: ["publication"] },
+  const order: Order = await OrderRepository.find(
+    { 
+      relations:['items'],
+      where: { id: id }
+    }    
   );
 
   return order;
@@ -29,9 +32,7 @@ const findAll = async function findAll(): Promise<Order[]> {
       name: "ASC",
       id: "DESC",
     }
-  });
-
-  console.log(Orders);
+  })
 
   return Orders;
 };
