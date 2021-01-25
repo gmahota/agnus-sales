@@ -1,8 +1,5 @@
 import {Entity,Column,PrimaryColumn,PrimaryGeneratedColumn, ManyToOne,JoinColumn} from 'typeorm';
 import Order from "../sales/order";
-import Payment from "../sales/payment";
-import PaymentMpesaLog from "../sales/paymentMpesaLog";
-
 @Entity('customers')
 export default class Customer {
     @PrimaryGeneratedColumn('increment')
@@ -27,6 +24,4 @@ export default class Customer {
     status?:string;
 
     orders?:Order[];
-
-    payments?:Payment[]
 }
