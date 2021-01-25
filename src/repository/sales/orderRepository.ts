@@ -28,8 +28,7 @@ const findAll = async function findAll(): Promise<Order[]> {
     order: {
       name: "ASC",
       id: "DESC",
-    },
-    relations: ["publication"],
+    }
   });
 
   console.log(Orders);
@@ -49,7 +48,6 @@ const findByPhoneNumber = async function findByPhoneNumber(
         name: "ASC",
         id: "DESC",
       },
-      relations: ["publication"],
     },
   );
 

@@ -4,6 +4,7 @@ import Invoice from './invoice';
 
 @Entity("orders")
 export default class Order {
+  
   @PrimaryGeneratedColumn('increment')
   id: number;
 
