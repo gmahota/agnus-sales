@@ -19,8 +19,6 @@ dotenv.config();
 
 const app = express();
 
-
-
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {

@@ -5,18 +5,7 @@ import authMiddleware from "../middlewares/auth";
 import adminRouter from "./admin";
 import authRouter from "./auth";
 import baseRouter from "./base";
-
-import MpesaController from "../controllers/MpesaController";
-
-import AuthController from "../controllers/admin/authController";
 import salesRouter from "./sales";
-
-
-
-
-
-
-
 
 const routes = Router();
 
@@ -31,9 +20,9 @@ routes.get("/", async (request: Request, response: Response) => {
   response.send("WellCome!");
 });
 
-routes.use('admin',adminRouter);
-routes.use('auth',authRouter);
-routes.use('base',baseRouter);  
-routes.use('sales',salesRouter);  
+routes.use('/api/admin',adminRouter);
+routes.use('/api/auth',authRouter);
+routes.use('/api/base',baseRouter);  
+routes.use('/api/sales',salesRouter);  
 
 export default routes;

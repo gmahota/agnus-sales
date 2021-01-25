@@ -10,7 +10,8 @@
     "build": "tsc",
     "clean": "rm -rf ./dist",
     "postinstall": "tsc",
-    "typeorm": "tsnd ./node_modules/typeorm/cli.js"
+    "typeorm": "tsnd ./node_modules/typeorm/cli.js",
+    "migration-generate": "typeorm migration:generate -n"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
