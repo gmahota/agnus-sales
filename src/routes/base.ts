@@ -21,17 +21,17 @@ import authMiddleware from "../middlewares/auth";
 
 const baseRouter = Router();
 
-baseRouter.get("/api/customers", get_all_customers)
-baseRouter.get("/api/customers/:phonenumber", get_customer)
-baseRouter.post("/api/customers/",create_customer)
+baseRouter.get("/customers", get_all_customers)
+baseRouter.get("/customers/:phonenumber", get_customer)
+baseRouter.post("/customers/",create_customer)
   
-baseRouter.get("/api/products", get_all_products)
-baseRouter.get("/api/products/:id", get_product)
-baseRouter.post("/api/products/",create_product)
+baseRouter.get("/products", get_all_products)
+baseRouter.get("/products/:id", get_product)
+baseRouter.post("/products/",create_product)
 
-baseRouter.get("/api/projects", get_all_projects)
-baseRouter.get("/api/projects/:id", get_project)
-baseRouter.post("/api/projects/",create_project)
+baseRouter.get("/projects", get_all_projects)
+baseRouter.get("/projects/:id", get_project)
+baseRouter.post("/projects/",create_project)
 
 
 //Change my password

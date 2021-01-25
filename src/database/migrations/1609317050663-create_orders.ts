@@ -35,21 +35,6 @@ export class createOrders1609317050663 implements MigrationInterface {
                     name: 'status', 
                     type: 'nvarchar(10)', 
                     isNullable: true
-                },
-                {
-                    name: 'publication_id', 
-                    type: 'varchar(50)', 
-                    isNullable: true
-                },
-            ],
-            foreignKeys:[
-                {
-                    name:'OrderPublication',
-                    columnNames:['publication_id'],
-                    referencedTableName:'publications',
-                    referencedColumnNames:['id'],
-                    onUpdate:'CASCADE',
-                    onDelete:'CASCADE'
                 }
             ]
         }));

@@ -30,7 +30,7 @@ export default class Order {
   @OneToMany(()=> OrderItem, item => item.order,{
     cascade:['insert','update']
   })
-  items: OrderItem[]
+  items?: OrderItem[]
   
   Invoices?: Invoice[]
 

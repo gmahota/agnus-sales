@@ -14,12 +14,12 @@ import {
 
 const salesRouter = Router();
 
-salesRouter.get("/api/orders", get_all_orders);
-salesRouter.get("/api/orders/:id", get_order);
-salesRouter.post("/api/orders/", create_order);
+salesRouter.get("/orders", get_all_orders);
+salesRouter.get("/orders/:id", get_order);
+salesRouter.post("/orders/", create_order);
 
-salesRouter.get("/api/payments", get_all_payments);
-salesRouter.get("/api/payments/:id", get_payment);
-salesRouter.post("/api/payments/", create_payment);
+salesRouter.get("/payments", get_all_payments);
+salesRouter.get("/payments/:id", get_payment);
+salesRouter.post("/payments/", create_payment);
 
 export default salesRouter;

@@ -10,4 +10,6 @@ module.exports =  {
   cli: {
     migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
   },
+  logging: process.env.TYPEORM_logging,
+  synchronize: process.env.TYPEORM_synchronize
 }
