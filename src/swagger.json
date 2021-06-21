@@ -9,7 +9,7 @@
             "url": "https://opensource.org/licenses/MIT"
         }
     },
-    "host": "agnusinvoiceapi.herokuapp.com",
+    "host": "agnus-sales.herokuapp.com",
     "basePath": "/api",
     "schemes": [
         "http",

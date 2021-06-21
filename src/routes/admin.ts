@@ -28,7 +28,7 @@ import {
 
 /**
  * @swagger
- * /Admin/Users:
+ * /admin/users:
  *   get:
  *     summary: Get User's List JSONPlaceholder 
  *     description: Retrieve a list of users from JSONPlaceholder. Can be used to testing an API.

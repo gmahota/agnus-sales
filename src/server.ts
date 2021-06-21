@@ -42,7 +42,7 @@ const swaggerDefinition = {
       description: 'Development Local PC',
     },
     {
-        url: 'https://agnusinvoiceapi.herokuapp.com/api',
+        url: 'https://agnus-sales.herokuapp.com/api',
         description: 'Development server',
       },
   ]
