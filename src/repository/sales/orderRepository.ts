@@ -11,10 +11,10 @@ interface Key {
   id?: any;
 }
 
-const findById = async function findById(id: string): Promise<Order> {
+const findById = async function findById(id: number): Promise<Order> {
   const OrderRepository = getRepository(Order);
 
-  const order: Order = await OrderRepository.find(
+  const order: Order = await OrderRepository.findOneOrFail(
     { 
       relations:['items'],
       where: { id: id }
