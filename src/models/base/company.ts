@@ -32,8 +32,6 @@ export default class Company {
     @Column()
     status?:string;
 
-    orders?:Order[];
-
     @Column()
     json?:string;
 }

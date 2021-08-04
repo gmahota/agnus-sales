@@ -1,5 +1,4 @@
 import {Entity,Column,PrimaryColumn,PrimaryGeneratedColumn, ManyToOne,JoinColumn} from 'typeorm';
-import Order from "../sales/order";
 @Entity('customers')
 export default class Customer {
     @PrimaryGeneratedColumn('increment')
@@ -31,8 +30,6 @@ export default class Customer {
 
     @Column()
     status?:string;
-
-    orders?:Order[];
 
     @Column()
     json?:string;
