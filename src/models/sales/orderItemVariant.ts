@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
   Entity,
   Column,
   PrimaryGeneratedColumn,
@@ -7,10 +8,11 @@ import {
   JoinColumn,
   OneToMany,
 } from "typeorm";
+
 import OrderItem from "./orderItem";
 
 @Entity("orderItemVariants")
-export default class OrderItemVariant {
+export default class OrderItemVariant  {
   @PrimaryGeneratedColumn("increment")
   id: number;
   @Column()

@@ -8,7 +8,7 @@ export const get_all_orders = async (request: Request, response: Response) => {
 };
 
 export const get_order = async (request: Request, response: Response) => {
-  const { id } =request.params;
+  const { id } = request.params;
 
   const order = await orderService.getById(id);
 
@@ -24,7 +24,9 @@ export const create_order = async (request: Request, response: Response) => {
     date,
     customer,
     name,
-    vat,
+    vatTotal,
+    discountTotal,
+    grossTotal,
     status,
     total,
     items,
@@ -37,9 +39,11 @@ export const create_order = async (request: Request, response: Response) => {
       code,
       customer,
       name,
-      vat,
-      status,
+      vatTotal,
+      discountTotal,
+      grossTotal,      
       total,
+      status,
       items,
     };
 

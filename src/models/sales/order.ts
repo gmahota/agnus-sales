@@ -1,10 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne,OneToOne, JoinColumn,OneToMany } from "typeorm";
+import { BaseEntity, Entity, Column, PrimaryGeneratedColumn, ManyToOne,OneToOne, JoinColumn,OneToMany } from "typeorm";
 import OrderItem from './orderItem';
-import Invoice from './invoice';
+import Invoice from './salesDocument';
 
-@Entity("orders")
-export default class Order {
-  
+@Entity("order")
+export default class Order  {
+
   @PrimaryGeneratedColumn('increment')
   id: number;
 
@@ -12,7 +12,7 @@ export default class Order {
   code?: string
 
   @Column()
-  date: Date;
+  date?: Date;
 
   customer?: number
   
@@ -22,8 +22,14 @@ export default class Order {
   @Column({length: 10, nullable:true })
   status?: string;
 
-  @Column({length: 10, nullable:true })
-  vat?: string;
+  @Column({nullable:true})
+  vatTotal?: number;
+
+  @Column()
+  discountTotal?: number;
+
+  @Column()
+  grossTotal?: number
 
   @Column()
   total?: number;
@@ -34,8 +40,4 @@ export default class Order {
   items?: OrderItem[]
   
   Invoices?: Invoice[]
-
-  constructor() {
-    this.date = new Date();
-  }
 }

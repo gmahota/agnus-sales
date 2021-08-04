@@ -6,7 +6,23 @@ import {
   create_order,
 } from "../controllers/sales/orderController";
 
+import {
+  get_all_TypeDocs,
+  get_TypeDoc,
+  create_TypeDoc,
+} from "../controllers/sales/typeDocController";
+
 const salesRouter = Router();
+
+salesRouter.get("/orders", get_all_orders);
+salesRouter.get("/orders/:id", get_order);
+salesRouter.post("/order/", create_order);
+
+salesRouter.get("/typedocuments", get_all_TypeDocs);
+salesRouter.get("/typedocuments/:id", get_TypeDoc);
+salesRouter.post("/typedocuments/", create_TypeDoc);
+
+export default salesRouter;
 
 /**
  * @swagger
@@ -67,9 +83,6 @@ const salesRouter = Router();
  *                   $ref: '#/components/schemas/Order' 
  */
 
-salesRouter.get("/orders", get_all_orders);
-salesRouter.get("/orders/:id", get_order);
-
 /**
  * @swagger
  * /sales/order:
@@ -90,6 +103,3 @@ salesRouter.get("/orders/:id", get_order);
  *             schema:
  *               $ref: '#/components/schemas/Order'  
  */
-salesRouter.post("/order/", create_order);
-
-export default salesRouter;
