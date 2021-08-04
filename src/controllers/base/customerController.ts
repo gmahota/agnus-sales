@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import CustomerService from "../../services/base/customer";
 import Customer from "../../models/base/customer";
-import OrderService from "../../services/sales/order";
-import Order from "../../models/sales/order";
 
 export const get_all_customers = async (
   request: Request,
@@ -27,22 +25,28 @@ export const get_customer = async (request: Request, response: Response) => {
 
 export const create_customer = async (request: Request, response: Response) => {
   const {
+    code,
     name,
     address,
     vat,
     province,
     phoneNumber,
+    cellphone,
+    email
   } = await request.body;
 
   try {
 
     let Customer: Customer = {
       id: 0,
+      code,
       name,
       address,
       vat,
       province,
-      phoneNumber
+      phoneNumber,
+      cellphone,
+      email
     };
 
     Customer = await CustomerService.create(Customer);

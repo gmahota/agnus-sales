@@ -14,6 +14,10 @@ export default class  Product {
 
   @Column()
   price: number
+
+  @Column()  
+  json?: string;
+
 }
 
 

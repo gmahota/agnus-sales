@@ -20,6 +20,9 @@ export default class Project {
   })
   orderItems?: OrderItem[];
 
+  @Column()  
+  json?: string;
+
 }
 
 export type { Project }

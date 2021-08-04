@@ -1,53 +1,57 @@
 import { Request, Response } from "express";
-import CustomerService from "../../services/base/customer";
-import Customer from "../../models/base/customer";
-import OrderService from "../../services/sales/order";
-import Order from "../../models/sales/order";
+import CompanyService from "../../services/base/company";
+import Company from "../../models/base/company";
 
-export const get_all_customers = async (
+export const get_all_companies = async (
   request: Request,
   response: Response,
 ) => {
-  const Customer = await CustomerService.getAll();
+  const Customer = await CompanyService.getAll();
   return response.status(200).json(Customer);
 };
 
-export const get_customer = async (request: Request, response: Response) => {
+export const get_company = async (request: Request, response: Response) => {
   const { id } = request.params;
 
-  const Customer = await CustomerService.getById(id);
+  const item = await CompanyService.getById(id);
 
-  if (Customer) {
-    return response.status(200).json(Customer);
+  if (item) {
+    return response.status(200).json(item);
   }
   return response.status(404).json(
     { msg: "no Customer with that phoneNumber" },
   );
 };
 
-export const create_customer = async (request: Request, response: Response) => {
+export const create_company = async (request: Request, response: Response) => {
   const {
+    code,
     name,
     address,
     vat,
     province,
     phoneNumber,
+    cellphone,
+    email
   } = await request.body;
 
   try {
 
-    let Customer: Customer = {
+    let item: Company = {
       id: 0,
+      code,
       name,
       address,
       vat,
       province,
-      phoneNumber
+      phoneNumber,
+      cellphone,
+      email
     };
 
-    Customer = await CustomerService.create(Customer);
+    item = await CompanyService.create(item);
 
-    return response.status(200).json(Customer);
+    return response.status(200).json(item);
   } catch (e) {
     return response.status(404).json(
       { msg: "error to create a Customer with that i", error: e },

@@ -1,7 +1,7 @@
-import {Entity,Column,PrimaryColumn,PrimaryGeneratedColumn, ManyToOne,JoinColumn} from 'typeorm';
-import Order from "../sales/order";
-@Entity('customers')
-export default class Customer {
+import {Entity,Column,PrimaryGeneratedColumn, ManyToOne,JoinColumn} from 'typeorm';
+
+@Entity('company')
+export default class Company {
     @PrimaryGeneratedColumn('increment')
     id:number;
 
