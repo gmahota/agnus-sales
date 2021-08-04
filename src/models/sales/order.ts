@@ -1,6 +1,6 @@
 import { BaseEntity, Entity, Column, PrimaryGeneratedColumn, ManyToOne,OneToOne, JoinColumn,OneToMany } from "typeorm";
 import OrderItem from './orderItem';
-import Invoice from './salesDocument';
+import Invoice from './document';
 
 @Entity("order")
 export default class Order  {

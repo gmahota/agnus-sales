@@ -1,10 +1,10 @@
 
 import { BaseEntity, Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToOne, JoinColumn, OneToMany } from "typeorm";
-import Invoice from './salesDocument'
+import Invoice from './document'
 import Project from '../base/project';
 
 @Entity("salesDocumentItem")
-export default class SalesDocumentItem {
+export default class DocumentItem {
   
   @PrimaryGeneratedColumn("increment")
   id: number;
@@ -46,5 +46,8 @@ export default class SalesDocumentItem {
   @ManyToOne(() => Invoice, inv => inv.id)
   @JoinColumn({ name: 'invoiceId' })
   invoice?: string;
+
+  @Column()  
+  json?: string;
 }
 

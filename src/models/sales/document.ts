@@ -1,21 +1,22 @@
 
 import { BaseEntity, Entity, Column, PrimaryGeneratedColumn, ManyToOne,OneToOne, JoinColumn,OneToMany } from "typeorm";
-import InvoiceItem from './salesDocumentItem'
-import SalesDocumentType from './typeDocument'
-import SalesDocumentSerie from './salesDocumentSerie';
+import InvoiceItem from './documentItem'
+import SalesDocumentType from './typeDoc'
+import SalesDocumentSerie from './serieDoc';
 
 @Entity("salesDocument")
-export default class SalesDocument  {
+export default class Document  {
+
   @PrimaryGeneratedColumn('increment')
   id: number;
 
   @ManyToOne(()=> SalesDocumentType, item => item.code)
   @JoinColumn({name:'type'})
-  type: SalesDocumentType;
+  type?: SalesDocumentType;
 
   @ManyToOne(()=> SalesDocumentSerie, item => item.code)
   @JoinColumn({name:'serie'})
-  serie: SalesDocumentSerie;
+  serie?: SalesDocumentSerie;
 
   @Column()
   number: number;
@@ -51,4 +52,7 @@ export default class SalesDocument  {
   })  
   
   items?: InvoiceItem[]
+
+  @Column()  
+  json?: string;
 }

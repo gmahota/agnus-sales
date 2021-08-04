@@ -2,7 +2,7 @@
 import { BaseEntity, Entity, Column, PrimaryColumn, ManyToOne,OneToOne, JoinColumn,OneToMany } from "typeorm";
 
 @Entity("salesDocumentSerie")
-export default class SalesDocumentSerie {
+export default class DocumentSerie {
   
   @PrimaryColumn()
   code: string

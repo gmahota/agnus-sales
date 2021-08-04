@@ -1,6 +1,6 @@
 
-import TypeDoc  from '../../models/sales/typeDocument'
-import repository  from '../../repository/sales/typeDocumentRepository'
+import Serie  from '../../models/sales/serieDoc'
+import repository  from '../../repository/sales/serieDocRepository'
 
 const getByCode = (id:string) =>
 repository.findByCode(id)
@@ -8,7 +8,7 @@ repository.findByCode(id)
 const getAll = () =>
 repository.findAll()
 
-const create = (item:TypeDoc) =>
+const create = (item:Serie) =>
 repository.create(item)
 
 export default {

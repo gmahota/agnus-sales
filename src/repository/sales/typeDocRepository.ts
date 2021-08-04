@@ -1,4 +1,4 @@
-import SalesType from "../../models/sales/typeDocument";
+import SalesType from "../../models/sales/typeDoc";
 import { getRepository } from "typeorm";
 
 const findByCode = async function findById(code: string): Promise<SalesType> {

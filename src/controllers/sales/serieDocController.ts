@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import TypeDocService from "../../services/sales/typeDoc";
-import TypeDoc from "../../models/sales/typeDoc";
+import SerieDocService from "../../services/sales/serieDoc";
+import SerieDoc from "../../models/sales/serieDoc";
 
-export const get_all_typeDocs = async (request: Request, response: Response) => {
-  const orders = await TypeDocService.getAll();
-  return response.status(200).json(orders);
+export const get_all_serieDocs = async (request: Request, response: Response) => {
+  const items = await SerieDocService.getAll();
+  return response.status(200).json(items);
 };
 
-export const get_typeDoc = async (request: Request, response: Response) => {
+export const get_serieDoc = async (request: Request, response: Response) => {
   const { id } = request.params;
 
-  const item = await TypeDocService.getByCode(id);
+  const item = await SerieDocService.getByCode(id);
 
   if (item) {
     return response.status(200).json(item);
@@ -18,21 +18,23 @@ export const get_typeDoc = async (request: Request, response: Response) => {
   return response.status(404).json({ msg: "no order with that id" });
 };
 
-export const create_typeDoc = async (request: Request, response: Response) => {
+export const create_serieDoc = async (request: Request, response: Response) => {
   const {
     code,
     description,
-    type
+    begin,
+    end
   } = await request.body;
 
   try {
-    let item: TypeDoc = {
+    let item: SerieDoc = {
       code,
       description,
-      type
+      begin,
+      end
     };
 
-    item = await TypeDocService.create(item);
+    item = await SerieDocService.create(item);
 
     return response.status(200).json(item);
   } catch (e) {
