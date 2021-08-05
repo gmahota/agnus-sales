@@ -7,7 +7,7 @@ const findById = async function findById(id: string): Promise<Document> {
 
   const item: Document = await DocumentRepository.findOneOrFail(
     { 
-      relations:['items'],
+      relations:['items','serie','type'],
       where: { id: id }
     }    
   );
@@ -19,6 +19,7 @@ const findAll = async function findAll(): Promise<Document[]> {
   const DocumentRepository = getRepository(Document);
 
   const items: Document[] = await DocumentRepository.find({
+    relations:['items','serie','type'],
     order: {
       date: "ASC",
       id: "DESC",
