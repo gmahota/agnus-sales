@@ -1,4 +1,4 @@
-module.exports =  {
+module.exports =  [{
   type: 'mysql',
   host: process.env.TYPEORM_HOST,
   port: process.env.TYPEORM_PORT,
@@ -12,4 +12,4 @@ module.exports =  {
   },
   logging: process.env.TYPEORM_logging,
   synchronize: process.env.TYPEORM_synchronize
-}
+}]
