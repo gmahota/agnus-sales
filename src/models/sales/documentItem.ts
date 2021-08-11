@@ -3,7 +3,7 @@ import { BaseEntity, Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToOne
 import Invoice from './document'
 import Project from '../base/project';
 
-@Entity("salesDocumentItem")
+@Entity("documentItem")
 export default class DocumentItem {
   
   @PrimaryGeneratedColumn("increment")

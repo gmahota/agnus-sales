@@ -34,9 +34,9 @@ salesRouter
   .post("/order/", create_order);
 
 salesRouter
-  .get("/typedocuments", get_all_typeDocs)
-  .get("/typedocuments/:id", get_typeDoc)
-  .post("/typedocuments/", create_typeDoc);
+  .get("/typedoc", get_all_typeDocs)
+  .get("/typedoc/:id", get_typeDoc)
+  .post("/typedoc/", create_typeDoc);
 
 salesRouter
   .get("/series", get_all_serieDocs)

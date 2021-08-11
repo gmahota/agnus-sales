@@ -1,15 +1,16 @@
 
-import TypeDoc  from '../../models/sales/typeDoc'
-import repository  from '../../repository/sales/typeDocRepository'
+import TypeDoc from '../../models/sales/typeDoc'
+import repository from '../../repository/sales/typeDocRepository'
+import TypeFilter from '../../helpers/typeFilter'
 
-const getByCode = (id:string) =>
-repository.findByCode(id)
+const getByCode = (id: string) =>
+  repository.findByCode(id)
 
-const getAll = () =>
-repository.findAll()
+const getAll = (type?: TypeFilter) =>
+  repository.findAll(type)
 
-const create = (item:TypeDoc) =>
-repository.create(item)
+const create = (item: TypeDoc) =>
+  repository.create(item)
 
 export default {
   getAll,

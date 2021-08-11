@@ -5,7 +5,10 @@ import typeService from "../../services/sales/typeDoc";
 import Document from "../../models/sales/document";
 
 export const get_all_docs = async (request: Request, response: Response) => {
-  const items = await docservice.getAll();
+
+  let type = request.query.type as string;
+
+  const items = await docservice.getAll({ type });
   return response.status(200).json(items);
 };
 
@@ -39,7 +42,7 @@ export const create_doc = async (request: Request, response: Response) => {
   try {
     let doc: Document = {
       id: 0,
-      number:0,
+      number: 0,
       code,
       date,
       customer,

@@ -3,7 +3,11 @@ import TypeDocService from "../../services/sales/typeDoc";
 import TypeDoc from "../../models/sales/typeDoc";
 
 export const get_all_typeDocs = async (request: Request, response: Response) => {
-  const orders = await TypeDocService.getAll();
+
+  let type = request.query.type as string;
+
+  const orders = await TypeDocService.getAll({ type });
+
   return response.status(200).json(orders);
 };
 
