@@ -15,16 +15,28 @@ const findById = async function findById(id: string): Promise<Document> {
   return item;
 };
 
-const findAll = async function findAll(): Promise<Document[]> {
+const findAll = async function findAll(typeFilter?: DocumentFilter): Promise<Document[]> {
   const DocumentRepository = getRepository(Document);
+  let items: Document[];
 
-  const items: Document[] = await DocumentRepository.find({
-    relations: ['items', 'serie', 'type'],
-    order: {
-      date: "ASC",
-      id: "DESC",
-    }
-  })
+  if (!!typeFilter?.type) {
+    items = await DocumentRepository.find({
+      where: { type: typeFilter.type },
+      relations: ['items', 'serie', 'type'],
+      order: {
+        date: "ASC",
+        id: "DESC",
+      }
+    })
+  } else {
+    items = await DocumentRepository.find({
+      relations: ['items', 'serie', 'type'],
+      order: {
+        date: "ASC",
+        id: "DESC",
+      }
+    })
+  }
 
   return items;
 };
