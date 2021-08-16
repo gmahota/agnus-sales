@@ -39,6 +39,8 @@ export default class DocumentItem {
   @Column({ length: 10, nullable: true })
   status?: string;
 
+  projectId:string;
+
   @ManyToOne(() => Project, project => project.orderItems)
   @JoinColumn({ name: 'projectId' })
   project?: Project;

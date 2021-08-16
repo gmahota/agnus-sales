@@ -24,6 +24,9 @@ export const get_doc = async (request: Request, response: Response) => {
 };
 
 export const create_doc = async (request: Request, response: Response) => {
+
+  console.log(request.body)
+
   const {
     code,
     type,
@@ -38,6 +41,8 @@ export const create_doc = async (request: Request, response: Response) => {
     total,
     items,
   } = await request.body;
+
+
 
   try {
     let doc: Document = {

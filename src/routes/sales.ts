@@ -31,22 +31,22 @@ const salesRouter = Router();
 salesRouter
   .get("/orders", get_all_orders)
   .get("/orders/:id", get_order)
-  .post("/order/", create_order);
+  .post("/order", create_order);
 
 salesRouter
   .get("/typedoc", get_all_typeDocs)
   .get("/typedoc/:id", get_typeDoc)
-  .post("/typedoc/", create_typeDoc);
+  .post("/typedoc", create_typeDoc);
 
 salesRouter
   .get("/series", get_all_serieDocs)
   .get("/series/:id", get_serieDoc)
-  .post("/series/", create_serieDoc);
+  .post("/series", create_serieDoc);
 
 salesRouter
   .get("/documents", get_all_docs)
   .get("/documents/:id", get_doc)
-  .post("/documents/", create_doc);
+  .post("/documents", create_doc);
 
 export default salesRouter;
 
