@@ -49,6 +49,7 @@
     "mysql": "^2.18.1",
     "pdf-lib": "^1.16.0",
     "pdf-parse": "^1.1.1",
+    "pg": "^8.7.1",
     "ramda": "^0.27.1",
     "supertest": "^6.0.1",
     "swagger-jsdoc": "^6.0.1",
