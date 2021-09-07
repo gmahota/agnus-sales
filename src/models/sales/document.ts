@@ -51,7 +51,6 @@ export default class Document {
   @OneToMany(() => InvoiceItem, item => item.invoice, {
     cascade: ['insert', 'update']
   })
-
   items?: InvoiceItem[]
 
   @Column()

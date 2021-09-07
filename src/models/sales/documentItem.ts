@@ -5,28 +5,28 @@ import Project from '../base/project';
 
 @Entity("documentItem")
 export default class DocumentItem {
-  
+
   @PrimaryGeneratedColumn("increment")
   id: number;
 
   @Column({ length: 20, nullable: true })
   code?: string;
-  
+
   @Column({ length: 50, nullable: true })
   description?: string;
 
   @Column({ length: 20, nullable: true })
   unity?: string;
-  
+
   @Column()
   quantity: number;
-  
+
   @Column()
   price: number;
-  
+
   @Column()
   grossTotal: number;
-  
+
   @Column({ length: 10, nullable: true })
   vatCode?: string;
 
@@ -39,7 +39,7 @@ export default class DocumentItem {
   @Column({ length: 10, nullable: true })
   status?: string;
 
-  projectId:string;
+  projectId: string;
 
   @ManyToOne(() => Project, project => project.orderItems)
   @JoinColumn({ name: 'projectId' })
@@ -47,9 +47,9 @@ export default class DocumentItem {
 
   @ManyToOne(() => Invoice, inv => inv.id)
   @JoinColumn({ name: 'invoiceId' })
-  invoice?: string;
+  invoice?: Invoice;
 
-  @Column()  
+  @Column()
   json?: string;
 }
 

@@ -1,4 +1,7 @@
 import Document from "../../models/sales/document";
+import DocumentItem from "../../models/sales/documentItem";
+import DocItemVariants from "../../models/sales/docItemVariant";
+
 import { getRepository } from "typeorm";
 import DocumentFilter from '../../helpers/documentFilter'
 
@@ -53,8 +56,33 @@ const create = async function create(
   return data;
 };
 
+const addLines = async function addLines(
+  item: DocumentItem[],
+): Promise<DocumentItem[]> {
+  const DocumentRepository = getRepository(DocumentItem);
+
+  const data = DocumentRepository.create(item);
+
+  await DocumentRepository.save(data);
+
+  return data;
+};
+
+const itemVariants = async function itemVariants(
+  item: DocItemVariants[],
+): Promise<DocItemVariants[]> {
+  const DocumentRepository = getRepository(DocItemVariants);
+
+  const data = DocumentRepository.create(item);
+
+  await DocumentRepository.save(data);
+
+  return data;
+}
+
 export default {
   create,
   findById,
-  findAll
+  findAll,
+  addLines
 };
