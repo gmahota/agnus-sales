@@ -34,12 +34,12 @@ export default class DocItemVariants {
   @Column()
   total: number;
 
-  @Column({ length: 10, nullable: true })
+  @Column({ length: 20, nullable: true })
   status?: string;
 
   documentItemId?: number
 
   @ManyToOne(() => DocumentItem, item => item.id)
   @JoinColumn({ name: 'documentItemId' })
-  documentItem: DocumentItem;
+  documentItem?: DocumentItem;
 }

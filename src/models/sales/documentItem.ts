@@ -2,6 +2,7 @@
 import { BaseEntity, Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToOne, JoinColumn, OneToMany } from "typeorm";
 import Invoice from './document'
 import Project from '../base/project';
+import DocumentVariant from './docItemVariant'
 
 @Entity("documentItem")
 export default class DocumentItem {
@@ -48,6 +49,11 @@ export default class DocumentItem {
   @ManyToOne(() => Invoice, inv => inv.id)
   @JoinColumn({ name: 'invoiceId' })
   invoice?: Invoice;
+
+  @OneToMany(() => DocumentVariant, item => item.documentItem, {
+    cascade: ['insert', 'update']
+  })
+  itemsVariants?: DocumentVariant[]
 
   @Column()
   json?: string;

@@ -33,7 +33,7 @@ export default class Document {
   @Column({ length: 50, nullable: false })
   name?: string;
 
-  @Column({ length: 10, nullable: true })
+  @Column({ length: 20, nullable: true })
   status?: string;
 
   @Column({ nullable: true })

@@ -4,7 +4,8 @@ import DocItemVariant from '../../models/sales/docItemVariant'
 
 import DocumentItem from '../../models/sales/documentItem'
 import repository from '../../repository/sales/documentRepository'
-import DocumentFilter from '../../helpers/documentFilter'
+import DocumentFilter from '../../helpers/documentVariantFilter'
+import DocumentVariantFilter from '../../helpers/documentVariantFilter'
 
 const getById = (id: string) =>
   repository.findById(id)
@@ -33,16 +34,22 @@ const create = async (item: Doc) => {
 const createOrUpdate = async (items: DocItemVariant[]) => {
 
   for (var i = 0; i < items.length; i++) {
-    let docItem: DocumentItem = await repository.findByLineId(items[i].id)
+    let docItem: DocumentItem = await repository.findByLineId(items[i].documentItemId || 0)
     items[i].documentItem = docItem
   }
 
+  console.log(items)
+
   return await repository.itemVariants(items)
 }
+
+const getAllDocumentVariants = (filter: DocumentVariantFilter) =>
+  repository.findAllLineVariant(filter)
 
 export default {
   getAll,
   getById,
   create,
-  createOrUpdate
+  createOrUpdate,
+  getAllDocumentVariants
 }
