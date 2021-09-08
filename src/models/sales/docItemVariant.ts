@@ -12,7 +12,7 @@ import {
 import DocumentItem from "./documentItem";
 
 @Entity("docItemVariants")
-export default class DocItemVariants  {
+export default class DocItemVariants {
   @PrimaryGeneratedColumn("increment")
   id: number;
 
@@ -37,7 +37,9 @@ export default class DocItemVariants  {
   @Column({ length: 10, nullable: true })
   status?: string;
 
-  @ManyToOne(()=> DocumentItem, item => item.id )
-  @JoinColumn({name:'documentItemId'})
-  documentItem:DocumentItem;
+  documentItemId?: number
+
+  @ManyToOne(() => DocumentItem, item => item.id)
+  @JoinColumn({ name: 'documentItemId' })
+  documentItem: DocumentItem;
 }

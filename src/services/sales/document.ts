@@ -1,5 +1,6 @@
 
 import Doc from '../../models/sales/document'
+import DocItemVariant from '../../models/sales/docItemVariant'
 
 import DocumentItem from '../../models/sales/documentItem'
 import repository from '../../repository/sales/documentRepository'
@@ -29,10 +30,19 @@ const create = async (item: Doc) => {
   return await getById(doc.id.toString())
 }
 
+const createOrUpdate = async (items: DocItemVariant[]) => {
 
+  for (var i = 0; i < items.length; i++) {
+    let docItem: DocumentItem = await repository.findByLineId(items[i].id)
+    items[i].documentItem = docItem
+  }
+
+  return await repository.itemVariants(items)
+}
 
 export default {
   getAll,
   getById,
-  create
+  create,
+  createOrUpdate
 }

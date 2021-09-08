@@ -18,6 +18,20 @@ const findById = async function findById(id: string): Promise<Document> {
   return item;
 };
 
+const findByLineId = async function findByLineId(id: number): Promise<DocumentItem> {
+  const repository = getRepository(DocumentItem);
+
+  const item: DocumentItem = await repository.findOneOrFail(
+    {
+      where: { id: id }
+    }
+  );
+
+  return item;
+};
+
+
+
 const findAll = async function findAll(typeFilter?: DocumentFilter): Promise<Document[]> {
   const DocumentRepository = getRepository(Document);
   let items: Document[];
@@ -84,5 +98,7 @@ export default {
   create,
   findById,
   findAll,
-  addLines
+  addLines,
+  itemVariants,
+  findByLineId
 };

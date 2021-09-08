@@ -94,3 +94,18 @@ export const delete_order = async (request: Request, response: Response) => {
     );
   }
 };
+
+export const create_doc_items_variant = async (request: Request, response: Response) => {
+
+  try {
+    const { docItemsVariant } = request.body;
+
+    const items = await docservice.createOrUpdate(docItemsVariant);
+
+    return response.send(200).json(items);
+  } catch (e) {
+    return response.send(404).json(
+      { msg: "error to create a doc items variant", e },
+    );
+  }
+}
