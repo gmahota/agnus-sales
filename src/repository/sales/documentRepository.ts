@@ -111,7 +111,7 @@ const findAllLineVariant = async function findAllLineVariant(
 
 
 
-  const items: DocItemVariants[] = []
+  let items: DocItemVariants[] = []
 
   switch (filter.status) {
     case 'pedding':
@@ -144,8 +144,10 @@ const findAllLineVariant = async function findAllLineVariant(
 
         if (!!item.itemsVariants) {
           let newItems = item.itemsVariants.filter(p => p.status === filter.status)
-          console.log(newItems)
-          items.concat(newItems)
+
+          if (newItems.length > 0) {
+            items = [...items, ...newItems]
+          }
         }
 
 
@@ -153,7 +155,7 @@ const findAllLineVariant = async function findAllLineVariant(
       break;
   }
 
-  console.debug(items);
+  console.log(items);
   return items;
 }
 
