@@ -7,8 +7,15 @@ import Document from "../../models/sales/document";
 export const get_all_docs = async (request: Request, response: Response) => {
 
   let type = request.query.type as string;
+  let customer = request.query.customer as string
+  let status = request.query.status as string
 
-  const items = await docservice.getAll({ type });
+  const items = await docservice.getAll({
+    type,
+    customer,
+    status
+  });
+
   return response.status(200).json(items);
 };
 
@@ -24,8 +31,6 @@ export const get_doc = async (request: Request, response: Response) => {
 };
 
 export const create_doc = async (request: Request, response: Response) => {
-
-  console.log(request.body)
 
   const {
     code,
@@ -100,7 +105,7 @@ export const create_doc_items_variant = async (request: Request, response: Respo
   try {
 
     const { docItemsVariant } = request.body;
-    console.log(docItemsVariant)
+
     const items = await docservice.createOrUpdate(docItemsVariant);
 
     return response.status(200).json({ items });

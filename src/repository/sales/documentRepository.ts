@@ -37,9 +37,21 @@ const findAll = async function findAll(typeFilter?: DocumentFilter): Promise<Doc
   const DocumentRepository = getRepository(Document);
   let items: Document[];
 
+  let where: any = {};
+
+  if (!!typeFilter?.type) {
+    where["type"] = typeFilter.type
+  }
+
+  if (!!typeFilter?.customer) {
+    where["customer"] = typeFilter.customer
+  }
+
+  console.log(typeFilter)
+
   if (!!typeFilter?.type) {
     items = await DocumentRepository.find({
-      where: { type: typeFilter.type },
+      where: where,
       relations: ['items', 'serie', 'type'],
       order: {
         date: "ASC",
@@ -120,7 +132,7 @@ const findAllLineVariant = async function findAllLineVariant(
 
         if (!item.itemsVariants || item.itemsVariants?.length === 0) {
           let newitem: DocItemVariants = {
-            id: 0,
+            id: item.id,
             quantity: item.quantity,
             price: item.price,
             grossTotal: item.grossTotal,
@@ -143,9 +155,15 @@ const findAllLineVariant = async function findAllLineVariant(
       document.items?.forEach(item => {
 
         if (!!item.itemsVariants) {
-          let newItems = item.itemsVariants.filter(p => p.status === filter.status)
+          let newItems = item.itemsVariants.filter(p => p.status === filter.status) || []
+
 
           if (newItems.length > 0) {
+            newItems = newItems.map(p => {
+              p.documentItemId = item.id
+              return p
+            })
+
             items = [...items, ...newItems]
           }
         }
@@ -155,7 +173,6 @@ const findAllLineVariant = async function findAllLineVariant(
       break;
   }
 
-  console.log(items);
   return items;
 }
 
