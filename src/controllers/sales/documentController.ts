@@ -117,7 +117,7 @@ export const create_doc_items_variant = async (request: Request, response: Respo
 export const get_doc_items_variant = async (request: Request, response: Response) => {
 
   try {
-    console.log("id");
+
     const { id } = request.params;
     const { status } = request.body;
 
@@ -125,7 +125,7 @@ export const get_doc_items_variant = async (request: Request, response: Response
       { documentId: Number(id), status }
     );
 
-    return response.status(200).json({ items });
+    return response.status(200).json(items);
   } catch (e) {
     return response.status(404).json(
       {

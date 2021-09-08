@@ -3,7 +3,7 @@ import DocumentItem from "../../models/sales/documentItem";
 import DocItemVariants from "../../models/sales/docItemVariant";
 
 import { getRepository } from "typeorm";
-import DocumentFilter from '../../helpers/documentVariantFilter'
+import DocumentFilter from '../../helpers/documentFilter'
 import DocumentVariantFilter from '../../helpers/documentVariantFilter'
 
 const findById = async function findById(id: string): Promise<Document> {
@@ -109,7 +109,7 @@ const findAllLineVariant = async function findAllLineVariant(
     }
   );
 
-  console.debug(document);
+
 
   const items: DocItemVariants[] = []
 
@@ -144,14 +144,16 @@ const findAllLineVariant = async function findAllLineVariant(
 
         if (!!item.itemsVariants) {
           let newItems = item.itemsVariants.filter(p => p.status === filter.status)
-
+          console.log(newItems)
           items.concat(newItems)
         }
+
+
       })
       break;
   }
 
-
+  console.debug(items);
   return items;
 }
 
