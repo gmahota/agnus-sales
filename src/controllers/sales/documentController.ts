@@ -141,3 +141,22 @@ export const get_doc_items_variant = async (request: Request, response: Response
   }
 }
 
+export const get_approved_qoutes = async (request: Request, response: Response) => {
+  
+    try {
+  
+      const { id } = request.params;
+  
+      const items = await docservice.getApprovedQoutes(id);
+  
+      return response.status(200).json(items);
+    } catch (e) {
+      return response.status(404).json(
+        {
+          msg: "error to create a doc items variant",
+          error: e
+        },
+      );
+    }
+  }
+

@@ -24,7 +24,8 @@ import {
   get_doc,
   create_doc,
   create_doc_items_variant,
-  get_doc_items_variant
+  get_doc_items_variant,
+  get_approved_qoutes
 } from "../controllers/sales/documentController";
 
 const salesRouter = Router();
@@ -50,5 +51,7 @@ salesRouter
   .post("/documents", create_doc)
   .post("/documents/:id/itemsVariant", create_doc_items_variant)
   .get("/documents/:id/itemsVariant", get_doc_items_variant)
+
+  .get("/customer/:id/approvedQoutes", get_approved_qoutes)
 
 export default salesRouter;

@@ -2,7 +2,7 @@ import Document from "../../models/sales/document";
 import DocumentItem from "../../models/sales/documentItem";
 import DocItemVariants from "../../models/sales/docItemVariant";
 
-import { getRepository } from "typeorm";
+import { getRepository,getConnection } from "typeorm";
 import DocumentFilter from '../../helpers/documentFilter'
 import DocumentVariantFilter from '../../helpers/documentVariantFilter'
 
@@ -121,8 +121,6 @@ const findAllLineVariant = async function findAllLineVariant(
     }
   );
 
-
-
   let items: DocItemVariants[] = []
 
   switch (filter.status) {
@@ -176,6 +174,26 @@ const findAllLineVariant = async function findAllLineVariant(
   return items;
 }
 
+const findApprovedQoutes = async function findApprovedQoutes(id:string): 
+  Promise<Document[]>{
+
+    // Status type - pedding, to approval, approved, rejected
+  const repository = getRepository(Document);
+
+  const documents: Document[]= await getConnection()
+    .createQueryBuilder()
+    .select("document")
+    .from(Document, "document")
+    .innerJoinAndSelect("document.items","item")
+    .innerJoinAndSelect("item.itemsVariants","variant")
+    .where("document.customer = :customer and variant.status = :status", 
+      { customer: id, status:"approved" })
+    .orderBy("document.date","DESC")
+    .getMany();
+
+  return documents;
+}
+
 export default {
   create,
   findById,
@@ -183,5 +201,6 @@ export default {
   addLines,
   itemVariants,
   findByLineId,
-  findAllLineVariant
+  findAllLineVariant,
+  findApprovedQoutes
 };

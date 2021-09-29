@@ -44,10 +44,14 @@ const createOrUpdate = async (items: DocItemVariant[]) => {
 const getAllDocumentVariants = (filter: DocumentVariantFilter) =>
   repository.findAllLineVariant(filter)
 
+const getApprovedQoutes = (id:string) =>
+  repository.findApprovedQoutes(id)
+
 export default {
   getAll,
   getById,
   create,
   createOrUpdate,
-  getAllDocumentVariants
+  getAllDocumentVariants,
+  getApprovedQoutes
 }
