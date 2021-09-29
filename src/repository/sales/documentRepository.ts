@@ -184,6 +184,8 @@ const findApprovedQoutes = async function findApprovedQoutes(id:string):
     .createQueryBuilder()
     .select("document")
     .from(Document, "document")
+    .innerJoinAndSelect("document.type", "type")
+    .innerJoinAndSelect("document.serie", "serie")
     .innerJoinAndSelect("document.items","item")
     .innerJoinAndSelect("item.itemsVariants","variant")
     .where("document.customer = :customer and variant.status = :status", 
