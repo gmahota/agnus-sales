@@ -1,0 +1,223 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model typeorm_migrations {
+  id        Int    @id @default(autoincrement())
+  timestamp Int
+  name      String
+
+  @@map("_typeorm_migrations")
+}
+
+model User {
+  id              Int      @id @default(autoincrement())
+  email           String   @unique
+  name            String?
+  username        String?
+  firstName       String?
+  lastName        String?
+  phoneNumber     String
+  password        String?
+  confirmPassword Boolean?
+  inactive        Boolean?
+  country         String?
+  profile         Profile?
+}
+
+model Profile {
+  id     Int     @id @default(autoincrement())
+  bio    String?
+  userId Int?    @unique
+  user   User?   @relation(fields: [userId], references: [id])
+}
+
+model Customer {
+  id          Int        @id @default(autoincrement())
+  code        String?
+  name        String
+  address     String?
+  vat         String?
+  province    String?
+  phoneNumber String?
+  cellphone   String?
+  email       String?
+  status      String?
+  json        String?
+  Order       Order[]
+  Document    Document[]
+}
+
+model Company {
+  id          Int     @id @default(autoincrement())
+  code        String?
+  name        String
+  address     String?
+  vat         String?
+  province    String?
+  phoneNumber String?
+  cellphone   String?
+  email       String?
+  status      String?
+  json        String?
+}
+
+model Product {
+  id          Int     @id @default(autoincrement())
+  code        String?
+  description String?
+  price       Float?
+  json        String?
+}
+
+model Project {
+  id          Int         @id @default(autoincrement())
+  code        String?
+  description String
+  status      String?
+  json        String?
+  OrderItem   OrderItem[]
+  DocumentItem   DocumentItem[]
+  // @OneToMany(()=> OrderItem, item => item.project,{
+  //   cascade:['insert','update']
+  // })
+  // orderItems?: OrderItem[];
+}
+
+model DocumentType {
+  id          Int     @id @default(autoincrement())
+  code        String  @unique
+  description String
+  type        String?
+  json        String?
+
+  Documents Document[]
+}
+
+model DocumentSerie {
+  id          Int       @id @default(autoincrement())
+  code        String    @unique
+  description String?
+  begin       DateTime?
+  end         DateTime?
+
+  Documents Document[]
+}
+
+model Order {
+  id            Int      @id @default(autoincrement())
+  code          String?
+  date          DateTime
+  customerId    Int
+  name          String?
+  status        String?
+  totalVat      Float
+  totalDiscount Float
+  totalGross    Float
+  total         Float
+
+  customer Customer? @relation(fields: [customerId], references: [id])
+
+  items OrderItem[]
+  // items?: OrderItem[]
+
+  // Invoices?: Invoice[]
+}
+
+model OrderItem {
+  id          Int     @id @default(autoincrement())
+  code        String?
+  description String?
+  unity       String?
+  quantity    Float
+  price       Float
+  totalGross  Float
+  vatCode     String?
+  totalVat    Float
+  total       Float
+  status      String?
+
+  projectId Int?
+  project   Project? @relation(fields: [projectId], references: [id])
+
+  orderId     Int
+  order       Order?             @relation(fields: [orderId], references: [id])
+  itemVariant OrderItemVariant[]
+}
+
+model OrderItemVariant {
+  id          Int       @id @default(autoincrement())
+  quantity    Float
+  price       Float
+  totalGross  Float
+  totalVat    Float
+  vatCode     String?
+  total       Float
+  status      String?
+  orderItemId Int
+  OrderItem   OrderItem @relation(fields: [orderItemId], references: [id])
+}
+
+model Document {
+  id            Int      @id @default(autoincrement())
+  typeId        Int
+  serieId       Int
+  number        Int
+  code          String?
+  date          DateTime
+  customerId    Int
+  name          String?
+  status        String?
+  totalVat      Float
+  totalDiscount Float
+  totalGross    Float
+  total         Float
+  json          String?
+
+  Customer Customer?     @relation(fields: [customerId], references: [id])
+  Type     DocumentType  @relation(fields: [typeId], references: [id])
+  Serie    DocumentSerie @relation(fields: [serieId], references: [id])
+  Items  DocumentItem[]
+}
+
+model DocumentItem {
+  id          Int     @id @default(autoincrement())
+  code        String?
+  description String?
+  unity       String?
+  quantity    Float
+  price       Float
+  totalGross  Float
+  vatCode     String?
+  totalVat    Float
+  total       Float
+  status      String?
+
+  projectId Int?
+  project   Project? @relation(fields: [projectId], references: [id])
+
+  documentId     Int
+  order       Document             @relation(fields: [documentId], references: [id])
+  itemVariant DocumentItemVariant[]
+}
+
+model DocumentItemVariant {
+  id          Int       @id @default(autoincrement())
+  quantity    Float
+  price       Float
+  totalGross  Float
+  totalVat    Float
+  vatCode     String?
+  total       Float
+  status      String?
+  documentItemId Int
+  DocumentItem   DocumentItem @relation(fields: [documentItemId], references: [id])
+}
