@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "author": "Guimarães Mahota",
   "scripts": {
     "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
     "start": "node dist/server.js",
     "build": "tsc",
     "clean": "rm -rf ./dist",
     "postinstall": "tsc",
-    "typeorm": "tsnd ./node_modules/typeorm/cli.js",
     "migration-generate": "typeorm migration:generate -n"
   },
   "devDependencies": {
@@ -30,11 +30,12 @@
     "@types/uuid": "^8.3.0",
     "@types/yup": "^0.29.10",
     "jest": "^26.6.3",
-    "prisma": "^4.8.0",
+    "prisma": "^4.15.0",
     "ts-jest": "^26.4.4",
     "typescript": "4.1.3"
   },
   "dependencies": {
+    "@prisma/client": "^4.15.0",
     "app-root-path": "^3.0.0",
     "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
@@ -57,6 +58,7 @@
     "ts-simple-nameof": "^1.3.0",
     "typeorm": "^0.2.29",
     "uuid": "^8.3.2",
-    "yup": "^0.32.6"
+    "yup": "^0.32.6",
+    "zod": "^3.21.4"
   }
 }
