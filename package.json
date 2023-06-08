@@ -60,5 +60,10 @@
     "uuid": "^8.3.2",
     "yup": "^0.32.6",
     "zod": "^3.21.4"
-  }
+  },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ]
 }
