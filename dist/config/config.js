@@ -14,3 +14,4 @@ exports.default = {
         publicKey: process.env.JWT_PUBLIC_KEY || "",
     },
 };
+//# sourceMappingURL=config.js.map
