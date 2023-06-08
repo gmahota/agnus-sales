@@ -8,8 +8,6 @@ import routes from "./routes/routes";
 
 import errorHandler from "./errors/handler";
 
-import "./database/connection";
-
 import swaggerUi from "swagger-ui-express";
 import * as swaggerDocument from './swagger.json'
 
