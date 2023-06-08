@@ -1,4 +1,4 @@
-import { Router,Request, Response } from "express";
+import { Router, Request, Response } from "express";
 import { prisma } from '../lib/prisma'
 
 import { z } from 'zod'
@@ -9,8 +9,9 @@ const baseRouter = Router();
 
 baseRouter.get("/customers", async (request: Request, response: Response) => {
   const items = await prisma.customer.findMany();
-  return { items }
-})
+  
+  return response.status(200).json({ items })
+});
 
 baseRouter.get("/customers/:id", async (request: Request, response: Response) => {
   const getPoolBody = z.object({
@@ -26,8 +27,9 @@ baseRouter.get("/customers/:id", async (request: Request, response: Response) =>
 
   })
 
-  return { customer }
-})
+  return response.status(200).json({ customer }) 
+});
+
 baseRouter.post("/customers/", async (request: Request, response: Response) => {
 
   const createCustomer = z.object({
@@ -64,13 +66,15 @@ baseRouter.post("/customers/", async (request: Request, response: Response) => {
     }
   })
 
-  return { _customer }
-})
+  return response.status(200).json({ _customer }) 
+});
 
 baseRouter.get("/companies", async (request: Request, response: Response) => {
   const items = await prisma.company.findMany();
-  return { items }
+
+  return response.status(200).json({ items }) 
 })
+
 baseRouter.get("/companies/:id", async (request: Request, response: Response) => {
   const getItemBody = z.object({
     id: z.number()
@@ -85,8 +89,9 @@ baseRouter.get("/companies/:id", async (request: Request, response: Response) =>
 
   })
 
-  return { item }
+  return response.status(200).json({ item}) 
 })
+
 baseRouter.post("/companies/", async (request: Request, response: Response) => {
 
   const createItem = z.object({
@@ -128,8 +133,11 @@ baseRouter.post("/companies/", async (request: Request, response: Response) => {
 
 baseRouter.get("/products", async (request: Request, response: Response) => {
   const items = await prisma.product.findMany();
-  return { items }
+
+  return response.status(200).json({ items }) 
+  
 })
+
 baseRouter.get("/products/:id", async (request: Request, response: Response) => {
   const getItemBody = z.object({
     id: z.number()
@@ -146,6 +154,7 @@ baseRouter.get("/products/:id", async (request: Request, response: Response) => 
 
   return { item }
 })
+
 baseRouter.post("/products/", async (request: Request, response: Response) => {
 
   const createItem = z.object({
@@ -166,8 +175,7 @@ baseRouter.post("/products/", async (request: Request, response: Response) => {
       price
     }
   })
-
-  return { item }
+  return response.status(200).json({ item }) 
 })
 
 baseRouter.get("/projects", async (request: Request, response: Response) => {
@@ -175,6 +183,7 @@ baseRouter.get("/projects", async (request: Request, response: Response) => {
 
   return response.status(200).json(items);
 })
+
 baseRouter.get("/projects/:id", async (request: Request, response: Response) => {
   const getItemBody = z.object({
     id: z.number()
@@ -188,9 +197,10 @@ baseRouter.get("/projects/:id", async (request: Request, response: Response) => 
     }
 
   })
+  return response.status(200).json({ item }) 
 
-  return { item }
 })
+
 baseRouter.post("/projects/", async (request: Request, response: Response) => {
 
   const createItem = z.object({
@@ -213,8 +223,7 @@ baseRouter.post("/projects/", async (request: Request, response: Response) => {
     }
   })
 
-  return { item }
-  
-})
+  return response.status(200).json({ item })
+});
 
 export default baseRouter;
