@@ -7,12 +7,11 @@
   "scripts": {
     "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
     "start": "node dist/server.js",
-    "build": "tsc",
+    "build": "npm run tsc",
+    "tsc": "tsc",
     "format": "prettier --write . --ignore-path .gitignore",
     "clean": "rm -rf ./dist",
-    "prestart": "npm run build",
-    "postinstall": "tsc",
-    "migration-generate": "typeorm migration:generate -n"
+    "prestart": "npm run build"
   },
   "devDependencies": {
     "@types/app-root-path": "^1.2.4",
