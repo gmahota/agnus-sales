@@ -13,10 +13,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const uuid_1 = require("uuid");
 // System Routers
 const base_1 = __importDefault(require("./base"));
 const sales_1 = __importDefault(require("./sales"));
 const routes = (0, express_1.Router)();
+routes.get('/api', (request, response) => {
+    const path = `/api/item/${(0, uuid_1.v4)()}`;
+    response.setHeader('Content-Type', 'text/html');
+    response.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+    response.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
+});
+routes.get('/api/item/:slug', (request, response) => {
+    const { slug } = request.params;
+    response.end(`Item: ${slug}`);
+});
 /**
  * @swagger
  * /:
