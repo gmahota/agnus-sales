@@ -3,8 +3,6 @@ import { prisma } from '../lib/prisma'
 
 import { z } from 'zod'
 
-import authMiddleware from "../middlewares/auth";
-
 const baseRouter = Router();
 
 baseRouter.get("/customers", async (request: Request, response: Response) => {
@@ -127,8 +125,7 @@ baseRouter.post("/companies/", async (request: Request, response: Response) => {
       email
     }
   })
-
-  return { item }
+  return response.status(200).json({ item }) 
 })
 
 baseRouter.get("/products", async (request: Request, response: Response) => {
