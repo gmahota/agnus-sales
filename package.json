@@ -6,11 +6,15 @@
   "author": "Guimarães Mahota",
   "scripts": {
     "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
-    "start": "nodemon src/server.ts",
-    "build": "rimraf dist && tsc",
+    "start": "node dist/server.js",
+    "build": "tsc",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run tsc",
+    "tsc": "tsc",
+    "clean": "rm -rf ./dist",
+    "postinstall": "tsc"
   },
   "devDependencies": {
     "@types/cors": "^2.8.8",
