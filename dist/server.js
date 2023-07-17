@@ -20,4 +20,3 @@ app.use("/uploads", express_1.default.static(path_1.default.join(__dirname, ".."
 app.listen(port, () => {
     return console.log(`Server is listening on ${port}`);
 });
-//# sourceMappingURL=server.js.map
