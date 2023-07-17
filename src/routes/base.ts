@@ -125,8 +125,7 @@ baseRouter.post("/companies/", async (request: Request, response: Response) => {
       email
     }
   })
-
-  return { item }
+  return response.status(200).json({ item }) 
 })
 
 baseRouter.get("/products", async (request: Request, response: Response) => {

@@ -95,7 +95,7 @@ baseRouter.post("/companies/", (request, response) => __awaiter(void 0, void 0, 
             email
         }
     });
-    return { item };
+    return response.status(200).json({ item });
 }));
 baseRouter.get("/products", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const items = yield prisma_1.prisma.product.findMany();

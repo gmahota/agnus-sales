@@ -6,7 +6,7 @@
   "author": "Guimarães Mahota",
   "scripts": {
     "dev": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
-    "start": "nodemon src/index.ts",
+    "start": "nodemon src/server.ts",
     "build": "rimraf dist && tsc",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist",
@@ -32,6 +32,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^9.0.0",
     "moment": "^2.29.1",
     "morgan": "^1.10.0",
