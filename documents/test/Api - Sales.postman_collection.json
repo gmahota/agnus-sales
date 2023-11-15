@@ -1,0 +1,691 @@
+{
+	"info": {
+		"_postman_id": "87f947ca-9d68-41ba-b3ee-818e37229dea",
+		"name": "Api - Sales",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3180414",
+		"_collection_link": "https://speeding-flare-355055.postman.co/workspace/My-Workspace~c2c0afc9-826d-47ad-8e2e-769681424bd7/collection/3180414-87f947ca-9d68-41ba-b3ee-818e37229dea?action=share&source=collection_link&creator=3180414"
+	},
+	"item": [
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/base/companies",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"base",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"C001\",\"name\": \"Mahota Serviços\", \"address\": \"Maputo\", \"vat\": \"4231234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sales_api_server}}api/base/companies",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"base",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secondToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/base/companies/1",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"base",
+								"companies",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/base/customers",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"base",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\":\"C001\",\"name\": \"Guimarães Mahota\", \"address\": \"Matola\", \"vat\": \"4231234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sales_api_server}}api/base/customers",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"base",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev_api_url}}api/base/customers/C001",
+							"host": [
+								"{{dev_api_url}}api"
+							],
+							"path": [
+								"base",
+								"customers",
+								"C001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/base/projects",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"base",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"P001\", \"description\": \"Contrução Web Site Wee\", \"status\": \"Open\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sales_api_server}}api/base/projects",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"base",
+								"projects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/base/projects/1",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"base",
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/base/products",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"base",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"R100\", \"description\": \"Recarga de 100\", \"price\": \"100\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sales_api_server}}api/base/products",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"base",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/base/projects/1",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"base",
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody)\r",
+									"pm.environment.set(\"secondToken\", data.access_token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"gmahota\",\r\n    \"password\":\"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "{{sales_api_server}}api/auth/login",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "guest",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev_api_url}}api/auth/guest",
+							"host": [
+								"{{dev_api_url}}api"
+							],
+							"path": [
+								"auth",
+								"guest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dev_api_url}}api/auth/auth",
+							"host": [
+								"{{dev_api_url}}api"
+							],
+							"path": [
+								"auth",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/sales/orders",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"sales",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"date\": \"2021-06-28T18:05:15.000Z\",\r\n        \"id\": 0,\r\n        \"code\": \"Recarda 100 X\",\r\n        \"name\": \"Joana Andre\",\r\n        \"status\": \"Open\",\r\n        \"vat\": 0,\r\n        \"total\": 2000\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sales_api_server}}api/sales/order",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"sales",
+								"order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Type Document",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/sales/typedocuments",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"sales",
+								"typedocuments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"code\":\"FA\",\r\n        \"description\":\"Factura\",\r\n        \"type\":\"payment\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sales_api_server}}api/sales/typedocuments",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"sales",
+								"typedocuments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/sales/typedocuments/fa",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"sales",
+								"typedocuments",
+								"fa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Serie Document",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/sales/series",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"sales",
+								"series"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"code\":\"2021\",\r\n        \"description\":\"Serie do Ano 2021\",\r\n        \"begin\":\"2021-01-01T00:00:00\",\r\n        \"end\":\"2021-12-31T00:00:00\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sales_api_server}}api/sales/series",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"sales",
+								"series"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/sales/series/2021",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"sales",
+								"series",
+								"2021"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Document",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/sales/documents",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"sales",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"fserre\",\r\n\"customer\": \"\",\r\n\"date\": \"2021-07-28\",\r\n\"discountTotal\": \"2\",\r\n\"grossTotal\": \"4\",\r\n\"items\": [],\r\n\"name\": \"aadad\",\r\n\"serie\": \"2021\",\r\n\"status\": \"open\",\r\n\"total\": \"3\",\r\n\"type\": \"COT\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{sales_api_server}}api/sales/documents",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"sales",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{sales_api_server}}api/sales/documents/31",
+							"host": [
+								"{{sales_api_server}}api"
+							],
+							"path": [
+								"sales",
+								"documents",
+								"31"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiJ9.Z21haG90YQ.ml0KUq1cnV4IyL8smuI6R4hPlQE01PnnHWWnPk9nxcg",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
