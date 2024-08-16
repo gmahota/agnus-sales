@@ -1,10 +1,9 @@
 import { Router, Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from "../../lib/prisma";
 import { body, validationResult } from "express-validator";
 import bcrypt from "bcrypt";
 
 const router = Router();
-const prisma = new PrismaClient();
 
 router.post('/register', [
     // Add validation rules using express-validator
