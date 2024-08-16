@@ -1,11 +1,10 @@
 import { Router, Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from "../../lib/prisma";
 import bcrypt from "bcrypt";
 import { createToken } from '../../lib/crypto';
 
 import { z } from "zod";
 
-const prisma = new PrismaClient();
 const router = Router();
 
 // Zod schemas
