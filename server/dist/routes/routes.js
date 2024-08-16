@@ -5,6 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const uuid_1 = require("uuid");
+// auth routes
+const auth_1 = __importDefault(require("./auth/auth"));
+const login_1 = __importDefault(require("./auth/login"));
+const register_1 = __importDefault(require("./auth/register"));
 // System Routers
 const base_1 = __importDefault(require("./base"));
 const sales_1 = __importDefault(require("./sales"));
@@ -32,6 +36,11 @@ routes.get("/", async (request, response) => {
 routes.get('/ping', (_req, res) => {
     return res.send('pong 🏓');
 });
+// Auth Routes
+routes.use("/api/auth", auth_1.default);
+routes.use("/api/auth", login_1.default);
+routes.use("/api/auth", register_1.default);
+// Aplication Base
 routes.use('/api/base', base_1.default);
 routes.use('/api/sales', sales_1.default);
 exports.default = routes;

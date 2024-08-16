@@ -1,9 +1,15 @@
 import { Router, Request, Response } from "express";
 import {v4} from "uuid"
 
+// auth routes
+import authRouter from "./auth/auth";
+import loginRouter from "./auth/login";
+import registerRouter from "./auth/register";
+
 // System Routers
 import baseRouter from "./base";
 import salesRouter from "./sales";
+
 
 const routes = Router();
 
@@ -33,6 +39,12 @@ routes.get('/ping', (_req: Request, res: Response) => {
   return res.send('pong 🏓')
 })
 
+// Auth Routes
+routes.use("/api/auth", authRouter);
+routes.use("/api/auth", loginRouter);
+routes.use("/api/auth", registerRouter);
+
+// Aplication Base
 routes.use('/api/base',baseRouter);  
 routes.use('/api/sales',salesRouter);  
 
