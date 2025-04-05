@@ -9,6 +9,8 @@ import registerRouter from "./auth/register";
 // System Routers
 import baseRouter from "./base";
 import salesRouter from "./sales";
+import seriesRouter from "./sales/series";
+import typeDocRouter from "./sales/typedoc";
 
 
 const routes = Router();
@@ -47,5 +49,6 @@ routes.use("/api/auth", registerRouter);
 // Aplication Base
 routes.use('/api/base',baseRouter);  
 routes.use('/api/sales',salesRouter);  
-
+routes.use('/api/sales',seriesRouter);
+routes.use('/api/sales',typeDocRouter);
 export default routes;
