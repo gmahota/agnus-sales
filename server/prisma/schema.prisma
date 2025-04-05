@@ -93,16 +93,21 @@ model DocumentType {
   json        String?
 
   Documents Document[]
+  Series DocumentSerie[]
 }
 
 model DocumentSerie {
   id          Int       @id @default(autoincrement())
-  code        String    @unique
+  code        String     
   description String?
   begin       DateTime?
   end         DateTime?
 
+  typeDocId   Int
+  typeDoc     DocumentType? @relation(fields: [typeDocId], references: [id])
+
   Documents Document[]
+  @@unique([code, typeDocId])
 }
 
 model Order {
